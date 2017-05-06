@@ -28,7 +28,7 @@ context PO {
 		ITEMS               : association[*] to Item on ITEMS.PURCHASEORDERID = PURCHASEORDERID;		
      	HISTORY             : HistoryT;
 		NOTEID              : BusinessKey null;
-		PARTNER             : BusinessKey;
+		PARTNER             : association to Partner;
 		CURRENCY            : CurrencyT;
 		GROSSAMOUNT         : AmountT;
 		NETAMOUNT           : AmountT;
@@ -69,7 +69,7 @@ context PO {
      {
      	PURCHASEORDERID   as "PurchOrderItem",
      	PURCHASEORDERITEM as "ItemPos",
-     	HEADER.PARTNER    as "PartnerId",
+     	HEADER.PARTNER.PARTNERID  as "PartnerId",
      	CURRENCY          as "CurrencyCode",
 		GROSSAMOUNT       as "GrossAmount",
 		NETAMOUNT         as "NetAmount",
@@ -90,5 +90,23 @@ context PO {
      	    RELEASEDATE : SDate;
      }	    
      
+     /**
+     * User Entity
+     */
+     @Catalog.tableType: #COLUMN
+     entity User {
+     	key USERID     : BusinessKey;
+     	    NAME       : MediumText;
+     }
      
+     /**
+     * Partner Entity
+     */
+     @Catalog.tableType: #COLUMN
+     entity Partner {
+     	key PARTNERID   : BusinessKey;
+     	    NAME        : MediumText;
+     }
+     
+  
 };
