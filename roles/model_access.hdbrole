@@ -1,0 +1,25 @@
+role Teste_HANA.roles::model_access {
+
+	// Schema Privileges
+	catalog schema "_SYS_BIC": SELECT, EXECUTE;
+	catalog schema "_SYS_REPO": SELECT, EXECUTE;
+	//catalog schema "p1941477852": SELECT, EXECUTE;
+	
+	//system privileges
+	system privilege: BACKUP ADMIN, USER ADMIN;
+	
+	//schema privileges
+	//catalog schema "SYSTEM": SELECT;
+	//schema Teste_HANA:p1941477852.hdbschema: INSERT, UPDATE, DELETE;
+	
+	//sql object Teste_HANA.cds::PO.ItemView: SELECT;
+	sql object Teste_HANA.data::PO.Header  : SELECT, INSERT, UPDATE, DELETE;
+	sql object Teste_HANA.data::PO.Item    : SELECT, INSERT, UPDATE, DELETE;
+	sql object Teste_HANA.data::PO.Partner : SELECT, INSERT, UPDATE, DELETE;
+	sql object Teste_HANA.data::PO.Product : SELECT, INSERT, UPDATE, DELETE;
+	sql object Teste_HANA.data::PO.User    : SELECT, INSERT, UPDATE, DELETE;
+	
+	application privilege: Teste_HANA::Execute, Teste_HANA::Admin;
+
+	
+}
